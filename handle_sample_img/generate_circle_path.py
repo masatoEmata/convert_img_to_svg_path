@@ -1,7 +1,6 @@
 import math
 import svgwrite
 
-dwg = svgwrite.Drawing( "sample_circle.svg" )
 
 def plotter(length):
 	points = []
@@ -11,6 +10,7 @@ def plotter(length):
 		points.append( [x,y] )
 	return points
 
+dwg = svgwrite.Drawing( "sample_circle.svg" )
 points = plotter(10)
 print(f'Sample points data: {points}')
 dwg.add(dwg.polygon(points=points))
