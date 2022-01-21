@@ -1,0 +1,1 @@
+# input：img file, output: array of characters' path
