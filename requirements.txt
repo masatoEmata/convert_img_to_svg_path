@@ -1,1 +1,8 @@
 svgwrite
+opencv-python
+numpy
+matplotlib
+# draw tunnel center line
+pylab-sdk
+requests
+scikit-image
