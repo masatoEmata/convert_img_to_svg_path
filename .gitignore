@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 
-handle_sample_img/
+
+sample_codes
