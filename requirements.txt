@@ -1,8 +1,8 @@
-svgwrite
-opencv-python
-numpy
-matplotlib
-# draw tunnel center line
-pylab-sdk
-requests
-scikit-image
+certifi==2021.10.8
+charset-normalizer==2.0.10
+idna==3.3
+numpy==1.22.1 # Core module
+opencv-contrib-python==4.5.5.62 # Core module
+Pillow==9.0.0 # Core module
+svgwrite==1.4.1 # Core module
+urllib3==1.26.8

@@ -1,6 +1,6 @@
 import svgwrite
 from dataclasses import dataclass
-from typing import Any
+from typing import List
 
 @dataclass
 class SvgWriter:
@@ -13,12 +13,20 @@ class SvgWriter:
     Other:
         Make svg file.
     """
-    path: Any
+    contours: List[List[float]]
     output_file_name: str
 
-    def write(self):
+    def contour_points(self, contour):
+        return [point[0].tolist() for point in contour]
+
+    def write(self, dwg, contour):
+        path = self.contour_points(contour)
+        dwg.add(dwg.polygon(points=path))
+
+    def write_all(self):
         dwg = svgwrite.Drawing(self.output_file_name)
-        dwg.add(dwg.polygon(points=self.path))
+        for contour in self.contours:
+            self.write(dwg, contour)
         dwg.save()
 
 
