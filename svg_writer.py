@@ -1,6 +1,7 @@
 import svgwrite
 from dataclasses import dataclass
 from typing import List
+import numpy as np
 
 @dataclass
 class SvgWriter:
@@ -16,10 +17,10 @@ class SvgWriter:
     contours: List[List[float]]
     output_file_name: str
 
-    def contour_points(self, contour):
+    def contour_points(self, contour: np.ndarray):
         return [point[0].tolist() for point in contour]
 
-    def write(self, dwg, contour):
+    def write(self, dwg: svgwrite.drawing.Drawing, contour: np.ndarray):
         path = self.contour_points(contour)
         dwg.add(dwg.polygon(points=path))
 

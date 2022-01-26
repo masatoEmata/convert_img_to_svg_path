@@ -11,16 +11,6 @@ class JapaneseFont:
     fontScale: int
     color: tuple
 
-    def pil2cv(self, imgPIL):
-        # imgCV_RGB = np.array(imgPIL, dtype=np.uint8)
-        imgCV_BGR = np.array(imgPIL)[:, :, ::-1]
-        return imgCV_BGR
-
-    def cv2pil(self, imgCV):
-        imgCV_RGB = imgCV[:, :, ::-1]
-        imgPIL = Image.fromarray(imgCV_RGB)
-        return imgPIL
-
     def cv2_putText(self):
         x, y = self.org
         imgPIL = Image.fromarray(self.img)
