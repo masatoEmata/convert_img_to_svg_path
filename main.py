@@ -7,9 +7,10 @@ from svg_writer import SvgWriter
 
 
 def main():
+
     def generate_text_img(text: str):
-        img = np.full((400, 800, 3), (160, 160, 160), dtype=np.uint8)
-        x, y = 250, 200
+        img = np.full((300, 300, 3), (100, 160, 160), dtype=np.uint8)
+        x, y = 50, 150
         fontPIL = "C:\Windows\Fonts\Pigmo-00.otf"
         size = 50
         colorBGR = (255, 0, 0)
