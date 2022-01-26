@@ -1,25 +1,24 @@
 import cv2
 from dataclasses import dataclass
 import numpy as np
-from typing import Any
 
 @dataclass
 class CommonRecognizer:
-    def generate_contours(img):
+    def generate_contours(img: np.ndarray):
         ret, thresh = cv2.threshold(img, 27, 25, 0)
         contours, hierarchy = cv2.findContours(
             thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         return contours
         # https://stackoverflow.com/questions/43108751/convert-contour-paths-to-svg-paths
 
-    def show_image_summary(img):
-        print(
-            f'[DEBUG] img type: {type(img)}, length(Lv1): {len(img)}, length(Lv2){len(img[0])}')
+    def show_image_summary(img: np.ndarray):
+        print(f'[DEBUG] img type: {type(img)}, length(Lv1): {len(img)}, length(Lv2){len(img[0])}')
         cv2.imshow('show_image_summary', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    def generate_gray_img(color_img):
+    def generate_gray_img(color_img: np.ndarray):
+
         def generate_gray_scale_img():
             gray_scale_img = cv2.cvtColor(color_img, cv2.COLOR_BGR2GRAY)
             _, gray_scale_img = cv2.threshold(
@@ -38,10 +37,9 @@ class CommonRecognizer:
 @dataclass
 class SkeletonImage:
     color_img: np.ndarray
-    gray_img: Any
+    gray_img: np.ndarray
 
-    def display_skeleton_image(self, cap, skeleton):
-
+    def display_skeleton_image(self, cap: str, skeleton: np.ndarray):
         def colorimg_with_skeleton():
             colorimg = self.color_img.copy()
             colorimg = colorimg // 2 + 127
