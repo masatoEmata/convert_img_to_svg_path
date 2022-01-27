@@ -1,5 +1,6 @@
 import logging
 from logging import getLogger, FileHandler, Formatter
+# https://sakusaku-techs.com/python/logging/
 
 class Log:
 
@@ -37,23 +38,14 @@ class Log:
         error_log_handler()
         Log.__instance = self
 
-    # -------------------------------------
-    # ４．アプリケーションログにINFOでログ出力
-    # -------------------------------------
     def app_info(self, msg):
         log = getLogger('APP')
         log.info(msg)
 
-    # -------------------------------------
-    # ５．ＳＱＬログにINFOでログ出力
-    # -------------------------------------
     def sql_info(self, msg):
         log = getLogger('SQL')
         log.info(msg)
 
-    # -------------------------------------
-    # ６．エラーログにERRORでログ出力
-    # -------------------------------------
     def all_error(self, msg):
         log = getLogger('ERROR')
         log.error(msg)
