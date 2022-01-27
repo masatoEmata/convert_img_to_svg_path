@@ -1,23 +1,35 @@
 import cv2
 from dataclasses import dataclass
 import numpy as np
+from logs.common_logger import Log
 
-@dataclass
+
 class CommonRecognizer:
-    def generate_contours(img: np.ndarray):
+    def img_shape_log(self, func_name, img) -> None:
+        log = Log()
+        log.app_info(f'[img length @{func_name}] - Lv1: {len(img)}, Lv2 first {len(img[0])}, Lv2 last {len(img[-1])}.')
+
+    def generate_contours(self, img: np.ndarray):
+        """
+        Args:
+            img (np.ndarray): Entire image data, including the background as nested array format.
+        Returns:
+            contours (nested array): Nested array with only characters extracted.
+        """
         ret, thresh = cv2.threshold(img, 27, 25, 0)
         contours, hierarchy = cv2.findContours(
             thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # self.img_shape_log('generate_contours', contours)
         return contours
         # https://stackoverflow.com/questions/43108751/convert-contour-paths-to-svg-paths
 
-    def show_image_summary(img: np.ndarray):
-        print(f'[DEBUG] img type: {type(img)}, length(Lv1): {len(img)}, length(Lv2){len(img[0])}')
+    def show_image_summary(self, img: np.ndarray) -> None:
+        self.img_shape_log('show_image_summary', img)
         cv2.imshow('show_image_summary', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    def generate_gray_img(color_img: np.ndarray):
+    def generate_gray_img(self, color_img: np.ndarray):
 
         def generate_gray_scale_img():
             gray_scale_img = cv2.cvtColor(color_img, cv2.COLOR_BGR2GRAY)
@@ -46,7 +58,7 @@ class SkeletonImage:
             colorimg[skeleton == 255] = 0
             return colorimg
 
-        def show_colorimg():
+        def show_colorimg() -> None:
             cv2.imshow(cap + '_skeleton', skeleton)
             cv2.imshow(cap + '_color image', colorimg_with_skeleton())
             cv2.waitKey(0)
