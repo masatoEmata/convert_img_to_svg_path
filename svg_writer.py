@@ -20,11 +20,11 @@ class SvgWriter:
     def contour_points(self, contour: np.ndarray):
         return [point[0].tolist() for point in contour]
 
-    def write(self, dwg: svgwrite.drawing.Drawing, contour: np.ndarray):
+    def write(self, dwg: svgwrite.drawing.Drawing, contour: np.ndarray) -> None:
         path = self.contour_points(contour)
         dwg.add(dwg.polygon(points=path))
 
-    def write_all(self):
+    def write_all(self) -> None:
         dwg = svgwrite.Drawing(self.output_file_name)
         for contour in self.contours:
             self.write(dwg, contour)

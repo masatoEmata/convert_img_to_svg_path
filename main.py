@@ -15,8 +15,7 @@ from logs.common_logger import Log
 @click.option('--size', help='Font size. The size of the "1" varies depending on the font.')
 @click.option('--input_txt_title')
 @click.option('--output_svg_title')
-
-def main(x, y, font_path, size, input_txt_title, output_svg_title):
+def main(x, y, font_path, size, input_txt_title, output_svg_title) -> None:
     def open_template():
         try:
             with open(f'data/input/txt/{input_txt_title}.txt', 'r', encoding='utf-8') as f:
@@ -26,7 +25,14 @@ def main(x, y, font_path, size, input_txt_title, output_svg_title):
                 f'{e}. Maybe there is no template.')
 
     def generate_text_img(text: str):
-        img = np.full((600, 6000, 3), (100, 160, 160), dtype=np.uint8)
+        array_length_i = 600
+        array_length_j = 6000
+        img = np.full((array_length_i, array_length_j, 3), (160, 160, 160), dtype=np.uint8)
+        """
+        sample img data: [[...]1, ..., [...]i]
+        [...]1: [x1(1), ..., x1(j)]
+        [...]i: [xi(j=1), ..., xi(j)]
+        """
         _x, _y = int(x), int(y)
         colorBGR = (255, 0, 0)
         font_image = JapaneseFont(img=img, text=text, org=(_x, _y), fontFace=font_path, fontScale=int(size), color=colorBGR).cv2_putText()
@@ -36,15 +42,16 @@ def main(x, y, font_path, size, input_txt_title, output_svg_title):
         template = open_template()
         message = template.substitute()
         txt_img = generate_text_img(message)
-        gray_img = CommonRecognizer.generate_gray_img(txt_img)
+        gray_img = CommonRecognizer().generate_gray_img(txt_img)
         skeleton_img = SkeletonImage(txt_img, gray_img).skeletonize_img()
-        contours = CommonRecognizer.generate_contours(skeleton_img)
+        contours = CommonRecognizer().generate_contours(skeleton_img)
+        print(len(contours))
         return contours
 
     def generate_pic_contours():
         pic_img = cv2.imread('./data/input/img/cat.png')
-        gray_img = CommonRecognizer.generate_gray_img(pic_img)
-        contours = CommonRecognizer.generate_contours(gray_img)
+        gray_img = CommonRecognizer().generate_gray_img(pic_img)
+        contours = CommonRecognizer().generate_contours(gray_img)
         return contours
 
     contours = []
