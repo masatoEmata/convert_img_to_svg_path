@@ -1,42 +1,59 @@
 import numpy as np
 import cv2
-
+import click
+import string
 from japanese_font import JapaneseFont
 from character_recognizer import CommonRecognizer, SkeletonImage
 from svg_writer import SvgWriter
+from logs.common_logger import Log
 
 
-def main():
+@click.command()
+@click.option('--x', help='The upper left coordinate of the input text as x.')
+@click.option('--y', help='The upper left coordinate of the input text as y.')
+@click.option('--font_path', help='Path to the font file')
+@click.option('--size', help='Font size. The size of the "1" varies depending on the font.')
+@click.option('--input_txt_title')
+@click.option('--output_svg_title')
+
+def main(x, y, font_path, size, input_txt_title, output_svg_title):
+    def open_template():
+        try:
+            with open(f'data/input/txt/{input_txt_title}.txt', 'r', encoding='utf-8') as f:
+                return string.Template(f.read())
+        except FileNotFoundError as e:
+            raise FileNotFoundError(
+                f'{e}. Maybe there is no template.')
 
     def generate_text_img(text: str):
-        img = np.full((300, 300, 3), (100, 160, 160), dtype=np.uint8)
-        x, y = 50, 150
-        fontPIL = "C:\Windows\Fonts\Pigmo-00.otf"
-        size = 50
+        img = np.full((600, 6000, 3), (100, 160, 160), dtype=np.uint8)
+        _x, _y = int(x), int(y)
         colorBGR = (255, 0, 0)
-        font_image = JapaneseFont(img=img, text=text, org=(
-            x, y), fontFace=fontPIL, fontScale=size, color=colorBGR).cv2_putText()
+        font_image = JapaneseFont(img=img, text=text, org=(_x, _y), fontFace=font_path, fontScale=int(size), color=colorBGR).cv2_putText()
         return font_image
 
     def generate_text_contours():
-        txt_img = generate_text_img('ねこ\n合同会社')
+        template = open_template()
+        message = template.substitute()
+        txt_img = generate_text_img(message)
         gray_img = CommonRecognizer.generate_gray_img(txt_img)
         skeleton_img = SkeletonImage(txt_img, gray_img).skeletonize_img()
         contours = CommonRecognizer.generate_contours(skeleton_img)
         return contours
 
     def generate_pic_contours():
-        pic_img = cv2.imread('./data/img/cat.png')
+        pic_img = cv2.imread('./data/input/img/cat.png')
         gray_img = CommonRecognizer.generate_gray_img(pic_img)
         contours = CommonRecognizer.generate_contours(gray_img)
         return contours
 
     contours = []
     contours.extend(generate_text_contours())
-    contours.extend(generate_pic_contours())
+    # contours.extend(generate_pic_contours())
+    SvgWriter(contours, f'./data/output/{output_svg_title}.svg').write_all()
 
-    SvgWriter(contours, './data/output/cat2.svg').write_all()
-
+    # log = Log()
+    # log.app_info(contours)
 
 if __name__ == "__main__":
     main()

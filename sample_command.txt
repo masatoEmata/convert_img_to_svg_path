@@ -1,0 +1,7 @@
+python main.py^
+ --x 50^
+ --y 150^
+ --font_path C:\Windows\Fonts\Pigmo-00.otf^
+ --size 50^
+ --message ねこ\n合同会社^
+ --output_file_title cat_message
