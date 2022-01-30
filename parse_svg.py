@@ -24,7 +24,7 @@ class svgLetterHandler:
         x, y = complex_pair.real + x_delta, complex_pair.imag + y_delta
         return complex(x, y)
 
-    def __move_cubic_bezier(self, cubic_bezier):
+    def __move_cubic_bezier(self, cubic_bezier: CubicBezier):
         moved_start = self.__calc_move_point(cubic_bezier.start, self.x_delta, self.y_delta)
         moved_c1 = self.__calc_move_point(cubic_bezier.control1, self.x_delta, self.y_delta)
         moved_c2 = self.__calc_move_point(cubic_bezier.control2, self.x_delta, self.y_delta)
