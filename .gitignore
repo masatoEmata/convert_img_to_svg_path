@@ -129,7 +129,8 @@ dmypy.json
 .pyre/
 
 
-
+handle_sample_img/
+sample_short_*
 sample_codes
 sample_command_private.txt
 *business*
