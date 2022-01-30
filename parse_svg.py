@@ -2,11 +2,13 @@ from dataclasses import dataclass
 from typing import List
 from svgpathtools import svg2paths2, wsvg, Path, CubicBezier
 
+
 @dataclass
 class svgLetterHandler:
     input_file_path: str
     x_delta: float
     y_delta: float
+
 
     def read_svg_letter(self):
         paths, attributes, svg_attributes = svg2paths2(self.input_file_path)
@@ -53,3 +55,4 @@ if __name__ == '__main__':
     svg_attributes = svg_letter[2]
     moved_paths = handler.move_paths(paths)
     handler.write_svg_attributes(moved_paths, svg_attributes, output_file_name)
+
