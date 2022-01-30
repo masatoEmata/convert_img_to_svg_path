@@ -12,7 +12,7 @@ class svgLetterHandler:
         paths, attributes, svg_attributes = svg2paths2(self.input_file_path)
         return (paths, attributes, svg_attributes)
 
-    def move_paths(self, paths):
+    def move_paths(self, paths: List):
         moved_paths = []
         for path in paths:
             moved_paths.append(self.__move_path(path))
