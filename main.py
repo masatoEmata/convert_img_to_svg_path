@@ -59,8 +59,8 @@ def main(x, y, font_path, size, input_txt_title, output_svg_title) -> None:
     # contours.extend(generate_pic_contours())
     SvgWriter(contours, f'./data/output/{output_svg_title}.svg').write_all()
 
-    # log = Log()
-    # log.app_info(contours)
+    log = Log()
+    log.app_info(contours)
 
 if __name__ == "__main__":
     main()
