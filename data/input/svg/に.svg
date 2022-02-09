@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 13.776257 14.146896"
+   version="1.1"
+   id="svg3961"
+   sodipodi:docname="に.svg"
+   width="3.6449683mm"
+   height="3.7430327mm"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3963"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     units="mm"
+     inkscape:zoom="1.2682566"
+     inkscape:cx="263.35365"
+     inkscape:cy="224.71793"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="レイヤー_1-2"
+     inkscape:document-units="mm"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2811">
+    <style
+       id="style2809">.cls-1{fill:#fff;}.cls-2{opacity:0.45;}.cls-3{fill:none;stroke:#231815;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:0.5px;}</style>
+  </defs>
+  <g
+     id="レイヤー_2"
+     data-name="レイヤー 2"
+     transform="matrix(1.3382059,0,0,1.3333549,1.0463902e-6,1.1200181e-6)">
+    <g
+       id="レイヤー_1-2"
+       data-name="レイヤー 1">
+      <path
+         class="cls-3"
+         d="m 1.2945723,0.24999916 a 13.93,13.93 0 0 0 -0.25,9.92999984 l 1,-2.7099998"
+         id="path2823"
+         style="fill:none;stroke:#231815;stroke-width:0.5px;stroke-linecap:round;stroke-linejoin:bevel" />
+      <path
+         class="cls-3"
+         d="m 3.2345723,5.1699992 a 7.36,7.36 0 0 1 5.68,-2.54"
+         id="path2825"
+         style="fill:none;stroke:#231815;stroke-width:0.5px;stroke-linecap:round;stroke-linejoin:bevel" />
+      <path
+         class="cls-3"
+         d="M 6.1845723,7.0999992 A 8.29,8.29 0 0 0 10.044572,10.359999"
+         id="path2827"
+         style="fill:none;stroke:#231815;stroke-width:0.5px;stroke-linecap:round;stroke-linejoin:bevel" />
+    </g>
+  </g>
+</svg>
